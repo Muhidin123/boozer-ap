@@ -1,21 +1,24 @@
 import React, { Component } from "react";
 import CocktailsCard from "./CocktailsCard";
-import { Card } from "semantic-ui-react";
+import { Card, Header } from "semantic-ui-react";
 
 export default class CocktailsContainer extends Component {
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-        return (
-            <div>
-                {this.props.cocktails.map((cocktail) => {
-                    return (
-                        <CocktailsCard cocktail={cocktail} key={cocktail.id} />
-                    );
-                })}
-            </div>
-        );
-    }
+  render() {
+    return (
+      <>
+        <Header size='huge' texAlign='center'>
+          Cocktails
+        </Header>
+        <Card.Group centered="true">
+          {this.props.cocktails.map(cocktail => {
+            return <CocktailsCard oneCocktail={cocktail} key={cocktail.id} />;
+          })}
+        </Card.Group>
+      </>
+    );
+  }
 }
